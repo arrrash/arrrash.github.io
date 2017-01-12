@@ -507,6 +507,11 @@ fieldset[disabled] .btn-success.active {
 background: #FDBF2D;
 min-height: 260px;
 }
+
+.skills .portfolio-link{
+background: #fff;
+color : #212121;
+}
 .roozamad .portfolio-link{
 background: #777;
 min-height: 260px;
@@ -539,6 +544,9 @@ min-height: 260px;
   line-height: 19px;
   color:white;
   padding:10px 10px 0px 10px;
+}
+.skills .portfolio-description{
+  color :#212121;
 }
 .portfolio-sub-description{
   padding-left:20px;
