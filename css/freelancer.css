@@ -547,6 +547,7 @@ min-height: 260px;
 }
 .skills .portfolio-description{
   color :#212121;
+  line-height: 30px;
 }
 .portfolio-sub-description{
   padding-left:20px;
