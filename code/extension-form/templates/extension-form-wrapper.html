@@ -1,0 +1,13 @@
+<div>
+    <extension-form-progress ng-if='step'></extension-form-progress>
+    <extension-form-intro ng-if='step == 0' class="animated fadeInLeft"></extension-form-intro>
+    <extension-form-step1 ng-if='step == 1' class="animated fadeInLeft"></extension-form-step1>
+    <extension-form-step2 ng-if='step == 2' class="animated fadeInLeft"></extension-form-step2>
+    <extension-form-step3 ng-if='step == 3' class="animated fadeInLeft"></extension-form-step3>
+    <extension-form-step4 ng-if='step == 4' class="animated fadeInLeft"></extension-form-step4>
+    <extension-form-step5 ng-if='step == 5' class="animated fadeInLeft"></extension-form-step5>
+    <extension-form-step7 ng-if='step == 7' class="animated fadeInLeft"></extension-form-step7>
+
+    <extension-form-popup ng-if="showHealthPopup || showDeletePopup || showErrorPopup || pendingForPayment"></extension-form-popup>
+    <div class="background" ng-if='step != 0 && step != 1'></div>
+</div>

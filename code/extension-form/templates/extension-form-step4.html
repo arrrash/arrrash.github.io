@@ -1,0 +1,55 @@
+<div id="step4" class="extention-form-step" vcenter offset="80">
+
+    <div class="content-container extension-duration top">
+
+
+        <div class="row top">
+            <div class="large-12 columns small-centered os-semi-bold font-size-26px os-color-white text-center">
+                I want to extend my course by
+                <duration-picker></duration-picker>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; months
+
+
+
+            </div>
+        </div>
+        <div class="row mgn-t60 bottom os-semi-bold ">
+            <div class="large-12 columns small-centered">
+                <div class="columns text-center os-color-white pad-t10 pad-b10 mgn-t10 mgn-b10" ng-class="{'small-4': !isMobile , 'small-12' : isMobile}">
+                    <div ng-show="formData.durationSelected">New Course Expiry Date</div>
+                    <div ng-show="formData.durationSelected" class="course-details font-size-26px pad-t10"> {{formData.newExpiryDate | momentToDate}} </div>
+
+                    <div ng-hide="formData.durationSelected">Course Expiry Date</div>
+                    <div ng-hide="formData.durationSelected" class="course-details font-size-26px pad-t10"> {{formData.selectedCourse.expiryDateTimestamp * 1000 | momentToDate}} </div>
+                </div>
+                <div class="columns text-center os-color-white pad-t10 pad-b10 mgn-t10 mgn-b10 middle-column" ng-class="{'small-4': !isMobile , 'small-12 mobile' : isMobile}">
+                    <div>Extension Remaining</div>
+                    <div class="course-details font-size-26px pad-t10"> {{formData.selectedCourse.maximunExtensionDuration.span - formData.durationSelected}} Months</div>
+
+                </div>
+                <div class="columns text-center os-color-white pad-t10 pad-b10 mgn-t10 mgn-b10" ng-class="{'small-4': !isMobile , 'small-12' : isMobile}">
+                    <div>Extension Cost (AUD)</div>
+                    <div class="course-details font-size-26px pad-t10"> $ {{formData.extensionPrice}} </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="form-footer os-bg-white sld-bdr-t-black position-fixed">
+
+        <div class="content-container">
+            <div class="row pad-t10 pad-b10">
+
+                <div class="column small-12 small-text-center medium-4 medium-text-left nopad left">
+                    <button class="next-step-button button button-secondary-medium" ng-click="nextStep(5)" ng-disabled="!formData.durationSelected" ng-class="{'mobile': isMobile}"> Extend course date </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

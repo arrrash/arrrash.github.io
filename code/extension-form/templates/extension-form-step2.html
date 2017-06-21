@@ -1,0 +1,57 @@
+<div id="step2" class="extention-form-step" vcenter offset="80" ng-class="{'mobile': isMobile}">
+
+
+    <div class="content-container top">
+        <p class="pad-b10 os-semi-bold os-color-white">Select an option that best suits</p>
+        <div class="row">
+            <div class="large-6 columns" ng-repeat="item in extensionReasons.extensionReasons" ng-click="selectReason(item.keyword, item.reason)">
+                <div class="option-tiles font-size-14px os-semi-bold os-color-white pad-10 pad-lr25 mgn-b10" ng-class="{'selected' : formData.selectedReason.keyword == item.keyword}">{{item.reason}} <i class="icon ico-oc-tick-thick right" ng-show='formData.selectedReason.keyword == item.keyword'></div>
+            </div>
+
+        </div>
+        <div  ng-show="formData.selectedReason.keyword == 'other_reason' " class="row pad-10 position-relative">
+            <div class="clear-reason font-size-10px pad-l"> <i class="icon ico-oc-close" ng-click="clearReason()"></div>
+            <div class="word-count">{{reasonLength}} / 150</div>
+         <textarea id="reasonTextBox" ng-model="formData.extensionOtherReason" class="column large-12" maxlength = "150" ng-keypress="keydown"> Enter reason here </textarea>
+
+            </div>
+        <!--<div class="row">
+            <div class="large-6 columns">
+                <div class=" option-tiles font-size-14px os-semi-bold os-color-white pad-10 mgn-b10">Work / family commitments</div>
+            </div>
+            <div class="large-6 columns">
+                <div class=" option-tiles font-size-14px os-semi-bold os-color-white pad-10 mgn-b10">Health reasons</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-6 columns">
+                <div class=" option-tiles font-size-14px os-semi-bold os-color-white pad-10 mgn-b10">Work placement</div>
+            </div>
+            <div class="large-6 columns">
+                <div class=" option-tiles font-size-14px os-semi-bold os-color-white pad-10 mgn-b10">Other reason</div>
+            </div>
+        </div>-->
+
+
+    </div>
+
+    <div class="form-footer os-bg-white sld-bdr-t-black position-fixed">
+
+        <div class="content-container">
+            <div class="row pad-t10 pad-b10">
+
+                <div class="column small-12 small-text-center medium-4 medium-text-left nopad left">
+                    <button class="next-step-button button button-secondary-medium" ng-click="nextStep(3)" ng-disabled="!formData.selectedReason.keyword || ( formData.selectedReason.keyword == 'other_reason' && !formData.extensionOtherReason)" ng-class="{'mobile': isMobile}"> Proceed with extension </button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>

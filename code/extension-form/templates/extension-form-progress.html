@@ -1,0 +1,43 @@
+<div class="form-progress max-width-100per os-bg-white sld-bdr-t-black">
+
+    <div>
+        <div class="row max-width-100per">
+            <div class="left" ng-click="nextStep(step - 1)" ng-if="step != 7" ng-class="{'pad-20' : !isMobile , 'pad-t20 pad-b20 pad-lr15' : isMobile}">
+                <i class="icon ico-oc-arrow-left font-size-20px"></i>
+            </div>
+            <div class="left" ng-class="{'pad-20' : !isMobile , 'pad-t20 pad-b20 pad-lr15' : isMobile}">
+                <span> {{stepTitle}} </span>
+            </div>
+
+            <div class="right  mgn-l15 mgn-tb20" ng-class="{'mgn-r15' : !isMobile , 'mgn-r5' : isMobile}">
+                <i class="icon ico-oc-close font-size-20px" ng-click="nextStep(0)"></i>
+            </div>
+
+            <div class="right info-pill os-color-light-gray os-bold" ng-show="step != 1" ng-class="{'mgn-t20 mgn-r25 neg-mgn-l6' : !isMobile , 'mgn-t20' : isMobile}" ng-click="showInfoBubble(step)">
+                <i class="icon ico-oc-info os-color-gray font-size-40px"></i>
+            </div>
+
+            <div class="right progress-pill os-bold" ng-show="!isMobile">
+                {{step}}/7
+            </div>
+        </div>
+
+        <div ng-show="showBubble">
+            <div class="info-bubble animated fadeIn">
+                <div class="position-absolute close-bubble" ng-click="hideInfoBubble()"><i class="icon ico-oc-close"> </i> </div>
+                <span class="bubble-arrow"></span>
+                <span class="bubble-patch"></span>
+                <h6 class="os-color-gray"> About this step </h6>
+                <p class="os-color-gray"> {{stepDescription}} </p>
+            </div>
+        </div>
+        <div class="row max-width-100per">
+            <div class="progress-bar">
+                <div class="done animated fadeInLeft" ng-style="percentageDone"></div>
+            </div>
+        </div>
+
+
+    </div>
+
+</div>

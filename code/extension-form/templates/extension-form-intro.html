@@ -1,0 +1,70 @@
+<div class="intro">
+    <div class="cover-image os-overflow-hidden">
+        <div class="content-container">
+            <div class="row pad-t10">
+                <div class="os-color-white icon ico-oc-home left pad-t5 mgn-r10 neg-mgn-t5"></div>
+                <div class="os-color-white font-size-12px left pad-t5 pad-lr5 mgn-r10" v-center> Home </div>
+                <div class="os-color-white font-size-20px left pad-b10 pad-lr5 mgn-r10 neg-mgn-t5"> . </div>
+                <div class="os-color-white font-size-12px left pad-t5 pad-lr5 mgn-r10"> Froms </div>
+            </div>
+
+
+
+            <div class="row position-absolute form-details">
+
+                <div class="columns large-2 mgn-t20 nopad">
+                    <span class="form-number font-size-2rem">FR 4.6</span>
+
+                </div>
+                <div class="columns large-10 nopad">
+
+                    <h1 class="os-color-white"> Course Extension form </h1>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="content-container mgn-t25">
+        <h3>
+            Before Your Start
+        </h3>
+
+        <div class="mgn-t20 os-color-gray">
+            <p>
+                If you feel you need more time to complete your course you may apply for an extension. Based on your eligibility, the amount of time that is extended for will be added on from your course expiry date.
+            </p>
+
+            <ul>
+                <li>
+                    Make sure you have familiarised yourself with your terms of enrolment
+                </li>
+                <li>
+                    You will be informed of your eligibility as part of this application
+                </li>
+                <li>
+                    Have your payment details on hand, you will be required to pay upfront for the amount of time you extend by.
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="os-bg-white sld-bdr-t-black intro-footer">
+
+    <div class="content-container">
+        <div class="row pad-t10 pad-b10">
+
+            <div class="column small-12 small-text-center medium-4 medium-text-left nopad left">
+                <button class="next-step-button button button-secondary-medium" ng-click="nextStep(1)" ng-disabled="!isDataReady" ng-class="{'mobile': isMobile}">
+
+                     <span ng-if="isDataReady">Get Started</span>
+                     <span ng-if="!isDataReady">Please wait</span>
+                     </button>
+            </div>
+
+
+        </div>
+    </div>
+</div>
