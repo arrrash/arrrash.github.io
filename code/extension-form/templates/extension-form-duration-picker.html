@@ -1,9 +1,0 @@
-<div id="duration-picker" class="duration-picker os-bg-white" ng-click="toggleDurationPicker()" ng-class="{'mobile': isMobile}">
-    <div class="selected-duration">
-        {{formData.durationSelected}}
-        <i class="icon font-size-20px" ng-class="{'ico-oc-arrow-up' : showDurationPicker , 'ico-oc-arrow-down' : !showDurationPicker}"></i>
-    </div>
-    <div ng-show="showDurationPicker" class="options">
-        <div class="option" ng-repeat="item in formData.selectedCourse.extensionOptions track by $index" ng-click="selectDuration(item.span, item.unit, item.keyword, item.price)"> {{item.span}} </div>
-    </div>
-</div>
