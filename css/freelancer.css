@@ -1,6 +1,10 @@
 body{
   margin-top:10%;
 }
+.desc {
+  font-size: 14px;
+padding-top: 10px;
+}
 a{
   color: #212121;
   font-weight: 400;
