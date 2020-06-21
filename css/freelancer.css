@@ -3,7 +3,12 @@ body{
 }
 .desc {
   font-size: 14px;
-padding-top: 10px;
+  padding-top: 10px;
+  font-weight: 400;
+}
+.location{
+  margin-top: -5px;
+  font-size: 14px;
 }
 a{
   color: #212121;
@@ -23,7 +28,7 @@ a{
 .title{
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  font-size: 20px
+  font-size: 18px
 }
 .skills_1st{
   font-family: 'Open Sans', sans-serif;
@@ -51,11 +56,15 @@ a{
   .name div{
     text-align: center;
   }
+
 }
 
  /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 768px) { 
   .name div{
+    text-align: center;
+  }
+  .info{
     text-align: center;
   }
 }
