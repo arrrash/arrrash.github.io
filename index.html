@@ -14,14 +14,43 @@
     <!-- Bootstrap Core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-
     <!-- Theme CSS -->
     <link href="css/freelancer.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+
+    <style>
+        .latest-post {
+            max-width: 760px;
+            margin: 30px auto 0;
+            padding: 20px 22px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+        }
+        .latest-post h3 {
+            margin: 0 0 10px;
+            color: #666;
+            font-size: 0.9rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+        .latest-post .post-title {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: #1c1c1c;
+            font-size: 1.4rem;
+            font-weight: 700;
+            line-height: 1.3;
+            text-decoration: none;
+        }
+        .latest-post .post-title:hover { text-decoration: underline; }
+        .latest-post .post-meta { margin-bottom: 10px; color: #666; font-size: 0.8rem; }
+        .latest-post .post-excerpt { margin: 0; color: #444; line-height: 1.6; }
+    </style>
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -31,56 +60,89 @@
 
       ga('create', 'UA-90962932-1', 'auto');
       ga('send', 'pageview');
-
     </script>
     <meta name="google-site-verification" content="Zf1k_9VQw25PcjuKeyVVbTdev3ALl3KEg9xFWYYul2c" />
 </head>
 
-<body  class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 name">
-                        <div>Arash<br/>Heydari</div>
-                </div>
-                <div class="col-lg-4 col-md-6 info"> 
-                    <div><bold>Applied AI Director</bold> </div>
-                    <div class="desc">Head of AI Modernisation <a href="https://Zurich.com.au/">@Zurich Insurance</a></div>
-                    <div class="location">Sydney, Australia </div>
-                    <hr>
+<body class="container-fluid">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 name">
+            <div>Arash<br/>Heydari</div>
+        </div>
+        <div class="col-lg-4 col-md-6 info">
+            <div><bold>Applied AI Director</bold></div>
+            <div class="desc">Head of AI Modernisation <a href="https://Zurich.com.au/">@Zurich Insurance</a></div>
+            <div class="location">Sydney, Australia</div>
+            <hr>
+            <div class="skills_1st">Leaqdership</div>
+            <div class="skills_1st">Legacy Modernisation</div>
+            <div class="skills_1st">ADLC</div>
+            <hr>
+            <a href="mailto:arash.hdr@gmail.com"><i class="fas fa-envelope-square mr-1"></i></a>
+            <a href="https://www.linkedin.com/in/arrrash/"><i class="fab fa-linkedin mr-1"></i></a>
+            <a href="https://arash.au"><i class="fab fa-wordpress mr-1"></i></a>
+        </div>
+    </div>
 
-                        <div class="skills_1st">Leaqdership</div>
-                        <div class="skills_1st">Legacy Modernisation</div>
-                        <div class="skills_1st">ADLC</div>
-                        <hr>
-                        <a href="mailto:arash.hdr@gmail.com"><i class="fas fa-envelope-square mr-1"></i></a>
-                        <a href="https://www.linkedin.com/in/arrrash/"><i class="fab fa-linkedin mr-1"></i></a>
-                        <a href="https://arash.au"><i class="fab fa-wordpress mr-1"></i> </a>
-
-
-
-
-
-
-                </div>
-            </div>
-
-
-
+    <section class="latest-post" aria-labelledby="latest-post-heading">
+        <h3 id="latest-post-heading">Latest article</h3>
+        <div id="latest-post-content">Loading latest post...</div>
+    </section>
 
     <script src="vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Plugin JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
-    <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
     <script src="js/contact_me.js"></script>
-
-    <!-- Theme JavaScript -->
     <script src="js/freelancer.min.js"></script>
 
+    <script>
+      async function loadLatestPost() {
+        const container = document.getElementById('latest-post-content');
+
+        try {
+          const response = await fetch('https://arash.au/feed/');
+          if (!response.ok) throw new Error('Feed request failed');
+
+          const xml = new DOMParser().parseFromString(await response.text(), 'application/xml');
+          if (xml.querySelector('parsererror')) throw new Error('Invalid RSS feed');
+
+          const item = xml.querySelector('item');
+          if (!item) throw new Error('No posts found');
+
+          const title = item.querySelector('title')?.textContent?.trim() || 'Latest post';
+          const link = item.querySelector('link')?.textContent?.trim() || 'https://arash.au';
+          const pubDate = item.querySelector('pubDate')?.textContent?.trim() || '';
+          const description = item.querySelector('description')?.textContent?.trim() || '';
+          const excerpt = description.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+
+          container.replaceChildren();
+          const titleLink = document.createElement('a');
+          titleLink.className = 'post-title';
+          titleLink.href = link;
+          titleLink.target = '_blank';
+          titleLink.rel = 'noopener noreferrer';
+          titleLink.textContent = title;
+          container.appendChild(titleLink);
+
+          if (pubDate) {
+            const date = document.createElement('div');
+            date.className = 'post-meta';
+            date.textContent = pubDate;
+            container.appendChild(date);
+          }
+
+          const summary = document.createElement('p');
+          summary.className = 'post-excerpt';
+          summary.textContent = excerpt ? (excerpt.length > 180 ? excerpt.substring(0, 180).trim() + '…' : excerpt) : 'Read the latest post on Arash.au.';
+          container.appendChild(summary);
+        } catch (error) {
+          container.innerHTML = '<p class="post-excerpt">Unable to load the latest post right now. <a href="https://arash.au" target="_blank" rel="noopener noreferrer">Visit the blog</a>.</p>';
+        }
+      }
+
+      loadLatestPost();
+    </script>
 </body>
 
 </html>
