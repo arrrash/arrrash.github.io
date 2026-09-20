@@ -97,6 +97,12 @@
     <script src="js/freelancer.min.js"></script>
 
     <script>
+      function decodeHtmlEntities(value) {
+        const textarea = document.createElement('textarea');
+        textarea.innerHTML = value;
+        return textarea.value;
+      }
+
       async function loadLatestPost() {
         const container = document.getElementById('latest-post-content');
 
@@ -114,14 +120,9 @@
           const link = new URL(post.link || 'https://arash.au');
           if (link.protocol !== 'https:') throw new Error('Unexpected post URL');
 
-          const title = post.title?.rendered || 'Latest post';
-          const excerpt = (post.excerpt?.rendered || '')
+          const title = decodeHtmlEntities(post.title?.rendered || 'Latest post');
+          const excerpt = decodeHtmlEntities(post.excerpt?.rendered || '')
             .replace(/<[^>]*>/g, '')
-            .replace(/&amp;/g, '&')
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&#8217;/g, '’')
-            .replace(/&#8220;|&#8221;/g, '“')
             .replace(/\s+/g, ' ')
             .trim();
 
